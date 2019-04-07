@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="cdictv.tiyitao">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -13,7 +15,11 @@
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.FazhiActivity"
@@ -25,12 +31,10 @@
         </activity>
         <activity android:name=".activity.ShenghuoActivity"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
+        <activity android:name=".activity.HongLvDengActivity" android:screenOrientation="landscape"/>
+        <activity android:name=".activity.ShengHuozhishuActivity" android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

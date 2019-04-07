@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.honglvdeng:
-
+                startActivity(new Intent(MainActivity.this,HongLvDengActivity.class));
                 break;
             case R.id.fazhi:
                     startActivity(new Intent(MainActivity.this,FazhiActivity.class));
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.shenghuo:
-
+                startActivity(new Intent(MainActivity.this,ShengHuozhishuActivity.class));
                 break;
             case R.id.shenghzs:
 
