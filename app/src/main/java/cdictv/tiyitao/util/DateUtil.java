@@ -4,14 +4,14 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class DateUtil {
-    public static String showData(){
+    public static String showYMD(){
         String data=null;
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy年MM月dd日");
         Calendar calendar=Calendar.getInstance();
         data=simpleDateFormat.format(calendar.getTime());
         return data;
     }
-    public static String showData2(){
+    public static String showD(){
         String data=null;
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd");
         Calendar calendar=Calendar.getInstance();
@@ -25,7 +25,7 @@ public class DateUtil {
         String data=simpleDateFormat.format(calendar.getTime());
         return data;
     }
-public static String showWeek(int d){
+public static String showWeekafter(int d){
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("EEEE");
         Calendar calendar=Calendar.getInstance();
         calendar.set(Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH+d);

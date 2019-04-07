@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
-import com.j256.ormlite.table.TableUtils;
+
 
 public class DataBaseHelp extends OrmLiteSqliteOpenHelper {
 
