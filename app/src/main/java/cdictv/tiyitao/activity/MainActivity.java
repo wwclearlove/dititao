@@ -84,13 +84,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(MainActivity.this,HongLvDengActivity.class));
                 break;
             case R.id.fazhi:
-                    startActivity(new Intent(MainActivity.this,FazhiActivity.class));
+                startActivity(new Intent(MainActivity.this, FazhiActivity.class));
                 break;
             case R.id.chuxing:
-                startActivity(new Intent(MainActivity.this,ChuxingActivity.class));
+                startActivity(new Intent(MainActivity.this, ChuxingActivity.class));
                 break;
             case R.id.shujufenxi:
-
+                startActivity(new Intent(this, SJFXActivity.class));
                 break;
             case R.id.shenghuo:
                 startActivity(new Intent(MainActivity.this,ShengHuozhishuActivity.class));
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.tianqi:
-
+                startActivity(new Intent(this, WeatherInformationActivity.class));
                 break;
             case R.id.yule:
 
