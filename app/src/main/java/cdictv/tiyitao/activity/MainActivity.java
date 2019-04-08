@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, WeatherInformationActivity.class));
                 break;
             case R.id.yule:
-
+                startActivity(new Intent(this, NewsActivity.class));
                 break;
         }
     }
