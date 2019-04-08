@@ -113,6 +113,9 @@ public class YijianActivity extends AppCompatActivity implements View.OnClickLis
             e.printStackTrace();
         }
         Toast.makeText(this, "提交成功！", Toast.LENGTH_SHORT).show();
+        yijiian_biaoti.setText("");
+        yijiian_yijianleirong.setText("");
+        yijiian_shouiji.setText("");
     }
 
     @Override
