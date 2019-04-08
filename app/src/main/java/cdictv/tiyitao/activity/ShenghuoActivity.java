@@ -1,8 +1,12 @@
 package cdictv.tiyitao.activity;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
@@ -14,6 +18,7 @@ import cdictv.tiyitao.R;
 import cdictv.tiyitao.bean.ZhushouBean;
 import cdictv.tiyitao.http.MyCall;
 import cdictv.tiyitao.http.OkhttpApi;
+import cdictv.tiyitao.util.Sputil;
 
 public class ShenghuoActivity extends AppCompatActivity {
     private ImageView left_menu;
@@ -25,7 +30,31 @@ public class ShenghuoActivity extends AppCompatActivity {
     private TextView zhi_2;
     private TextView sport_1;
     private TextView sport_2;
+    private ZhushouBean.DataBean mData;
     private Handler mHandler = new Handler();
+    private Runnable runnable = new Runnable() {
+
+        @Override
+        public void run() {
+            mHandler.postDelayed(this,10000);
+            String pm= Sputil.getString("pm");
+            String wd= Sputil.getString("wd");
+            String sd= Sputil.getString("sd");
+            String gz= Sputil.getString("gz");
+          if(Integer.parseInt(mData.guangzhao)<Integer.parseInt(gz)){
+              showNOtif("光照强度",gz,mData.guangzhao,1);
+          }
+            if(mData.pm<Integer.parseInt(pm)){
+                showNOtif("pm2.5",pm,mData.pm+"",2);
+            }
+            if(Integer.parseInt(mData.wendu)<Integer.parseInt(wd)){
+                showNOtif("温度",wd,mData.wendu,3);
+            }
+            if(Integer.parseInt(mData.shidu)<Integer.parseInt(sd)){
+                showNOtif("湿度",sd,mData.shidu,4);
+            }
+        }
+    };
     private Runnable mRunnable = new Runnable() {
         @Override
         public void run() {
@@ -38,8 +67,8 @@ public class ShenghuoActivity extends AppCompatActivity {
                             Gson gson = new Gson();
                             try {
                                 ZhushouBean bean = gson.fromJson(json, ZhushouBean.class);
-                             ZhushouBean.DataBean data=bean.data;
-                             xuanyan(data);
+                                mData = bean.data;
+                             xuanyan(mData);
                             } catch (Exception e) {
 
                             }
@@ -53,6 +82,20 @@ public class ShenghuoActivity extends AppCompatActivity {
         }
     };
 
+        private void showNOtif(String string, String fz,String dqfz, int id) {
+        NotificationManager manager= (NotificationManager)
+                getSystemService(NOTIFICATION_SERVICE);
+        Notification noti = new NotificationCompat.Builder(this)
+                .setContentTitle(string+"报警")
+                .setContentText("阀值:"+fz+" 当前值:"+dqfz)//短内容
+                .setWhen(System.currentTimeMillis())
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setAutoCancel(true) //点击咯就会自动撤销
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher_round))
+                .build();
+        manager.notify(id, noti);
+
+    }
     private void xuanyan(ZhushouBean.DataBean data) {
         pm.setText("PM2.5:"+data.pm);
         wd.setText("温 度:"+data.wendu);
@@ -104,12 +147,14 @@ public class ShenghuoActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         mHandler.postDelayed(mRunnable, 3000);
+        mHandler.postDelayed(runnable, 10000);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
         mHandler.removeCallbacks(mRunnable);
+        mHandler.removeCallbacks(runnable);
     }
 
     private void initView() {
