@@ -26,7 +26,6 @@ public class ShenghuoActivity extends AppCompatActivity {
     private TextView sport_1;
     private TextView sport_2;
     private Handler mHandler = new Handler();
-
     private Runnable mRunnable = new Runnable() {
         @Override
         public void run() {
@@ -60,15 +59,14 @@ public class ShenghuoActivity extends AppCompatActivity {
         sd.setText("湿 度:"+data.shidu);
         if(data.pm>=0&&data.pm<100){
             sport_1.setText("良好");
-            sport_1.setTextColor(Color.parseColor("#000"));
+            sport_1.setTextColor(Color.parseColor("#000000"));
             sport_2.setText("气象条件会对晨练影响不大");
         }else if(data.pm>=100&&data.pm<200){
             sport_1.setText("轻度");
-            sport_1.setTextColor(Color.parseColor("#000"));
+            sport_1.setTextColor(Color.parseColor("#000000"));
             sport_2.setText("受天气影响，较不宜晨练");
         }else if(data.pm>=200&&data.pm<300){
             sport_1.setText("重度");
-
             sport_1.setTextColor(Color.parseColor("#ef0101"));
             sport_2.setText("减少外出，出行注意戴口罩");
         }else if(data.pm>300){
@@ -77,18 +75,18 @@ public class ShenghuoActivity extends AppCompatActivity {
             sport_2.setText("停止一切外出活动");
         }
         //截取字符串
-        int gz1=Integer.parseInt(data.guangzhao.substring(8,9));
-        int gz2=Integer.parseInt(data.guangzhao.substring(10,13));
+//        int gz1=Integer.parseInt(data.guangzhao.substring(8,9));
+//        int gz2=Integer.parseInt(data.guangzhao.substring(10,13));
         //    光照。0-100。  最小阀值。30。最大阀值60。
-        if(gz2<30){
+        if(Integer.parseInt(data.guangzhao)<30){
             zhi_1.setText("非常弱");
-            zhi_1.setTextColor(Color.parseColor("#000"));
+            zhi_1.setTextColor(Color.parseColor("#000000"));
             zhi_2.setText("您无需担心紫外线");
-        }else if(gz1>=30&&gz2<=60){
+        }else if(Integer.parseInt(data.guangzhao)>=30&&Integer.parseInt(data.guangzhao)<60){
             zhi_1.setText("弱");
-            zhi_1.setTextColor(Color.parseColor("#000"));
+            zhi_1.setTextColor(Color.parseColor("#000000"));
             zhi_2.setText("外出适当涂抹低倍数防晒霜");
-        }else if(gz2>60){
+        }else if(Integer.parseInt(data.guangzhao)>60){
             zhi_1.setText("强");
             zhi_1.setTextColor(Color.parseColor("#ef0101"));
             zhi_2.setText("外出需要涂抹中倍数防晒霜");

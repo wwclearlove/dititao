@@ -30,9 +30,7 @@ public class ShengHuozhishuActivity extends AppCompatActivity {
     Runnable mRunnable=new Runnable() {
         @Override
         public void run() {
-            if(flag){
-                dialog = ProgressDialog.show(ShengHuozhishuActivity.this, "请稍后", "正在请求中....");
-            }
+
             initRequest();
             handler.postDelayed(this,3000);
         }
@@ -41,9 +39,14 @@ public class ShengHuozhishuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sheng_huozhishu);
+        if(flag){
+            dialog = ProgressDialog.show(ShengHuozhishuActivity.this, "请稍后", "正在请求中....");
+        }
         shenghuo_grideview = findViewById(R.id.shenghuo_grideview);
         adapter = new ShengHuoAdapter(ShengHuozhishuActivity.this,list);
         shenghuo_grideview.setAdapter(adapter);
+//        initRequest();
+        initRequest();
     }
 
     @Override

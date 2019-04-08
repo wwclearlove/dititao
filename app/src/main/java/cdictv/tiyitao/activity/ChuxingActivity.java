@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.Switch;
@@ -47,6 +48,12 @@ public class ChuxingActivity extends AppCompatActivity {
      img_ryg.setImageResource(R.drawable.amintion);
         AnimationDrawable animationDrawable= (AnimationDrawable) img_ryg.getDrawable();
         animationDrawable.start();
+        dateid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDataDialog();
+            }
+        });
     }
 
     private void showDataDialog() {

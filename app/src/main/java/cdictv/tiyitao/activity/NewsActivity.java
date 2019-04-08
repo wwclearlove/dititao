@@ -1,5 +1,6 @@
 package cdictv.tiyitao.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,7 @@ public class NewsActivity extends AppCompatActivity {
     private ListView list;
     List<NewsBean.NewslistBean> newslist;
     private NesAdatper mAdatper;
+    private ProgressDialog mProgressDialog;
 
     //
     @Override
@@ -38,6 +40,7 @@ public class NewsActivity extends AppCompatActivity {
     }
 
     private void okhttpGeda() {
+        mProgressDialog = ProgressDialog.show(NewsActivity.this,"提示","正在请求");
         OkhttpApi.showOkhttp("http://api.tianapi.com/keji/?key=6edb9118c6ce61c710140aeb03b10e2c&num=50&rand=1",
                 new MyCall() {
                     @Override
@@ -51,12 +54,14 @@ public class NewsActivity extends AppCompatActivity {
                             mAdatper.notifyDataSetChanged();
                         }catch (Exception e){
 
+                        }finally {
+                            mProgressDialog.dismiss();
                         }
                     }
 
                     @Override
                     public void failed(String str) {
-
+                        mProgressDialog.dismiss();
                     }
                 });
     }

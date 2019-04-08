@@ -39,6 +39,7 @@
        android:verticalSpacing="50dp"
        android:horizontalSpacing="20dp"
        android:numColumns="3"
+       tools:listitem="@layout/shenghuo_item"
        android:layout_marginTop="10dp"
        android:layout_width="match_parent"
        android:layout_height="match_parent">

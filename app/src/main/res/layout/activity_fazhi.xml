@@ -85,6 +85,7 @@
                     android:textSize="16sp"/>
 
                 <EditText
+                    android:maxLength="3"
                     android:id="@+id/ed_wd"
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
@@ -117,6 +118,7 @@
                     android:textSize="16sp"/>
 
                 <EditText
+                    android:maxLength="3"
                     android:id="@+id/ed_sd"
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
@@ -147,6 +149,7 @@
                     android:textSize="16sp"/>
 
                 <EditText
+                    android:maxLength="3"
                     android:id="@+id/ed_gz"
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
@@ -177,6 +180,7 @@
                     android:textSize="16sp"/>
 
                 <EditText
+                    android:maxLength="3"
                     android:id="@+id/ed_co2"
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
@@ -207,6 +211,7 @@
                     android:textSize="16sp"/>
 
                 <EditText
+                    android:maxLength="3"
                     android:id="@+id/ed_pm"
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
@@ -237,6 +242,7 @@
                     android:textSize="16sp"/>
 
                 <EditText
+                    android:maxLength="3"
                     android:id="@+id/ed_road"
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
