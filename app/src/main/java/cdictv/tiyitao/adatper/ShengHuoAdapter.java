@@ -55,14 +55,15 @@ public class ShengHuoAdapter extends BaseAdapter {
           shenghuoLevel = (TextView) convertView.findViewById(R.id.shenghuo_level);
           shenghuoText = (TextView) convertView.findViewById(R.id.shenghuo_text);
 
-          selectTextView(position,list.get(position));
+          selectTextView(position,list.get(position),shenghuoImg);
 
         return convertView;
     }
 
-    void selectTextView(int position,int num){
+    void selectTextView(int position,int num,ImageView shenghuoImg){
        switch (position){
            case 0:
+               shenghuoImg.setImageResource(R.mipmap.qin);
                if(num < 1000){
                    shenghuoLevel.setText("弱("+num+")");
                    shenghuoText.setText("辐射较弱，涂擦SPF12~15、PA+护肤品");
@@ -75,6 +76,7 @@ public class ShengHuoAdapter extends BaseAdapter {
                }
                break;
            case 1:
+               shenghuoImg.setImageResource(R.mipmap.qin);
                 if(num<8){
                     shenghuoLevel.setText("较易发("+num+")");
                     shenghuoText.setText("温度低，风较大，较易发生感冒，注意防护");
@@ -83,7 +85,9 @@ public class ShengHuoAdapter extends BaseAdapter {
                     shenghuoText.setText("无明显降温，感冒机率较低");
                 }
                break;
-           case 2: if(num<8){
+           case 2:
+               shenghuoImg.setImageResource(R.mipmap.yaowan);
+               if(num<8){
                shenghuoLevel.setText("较易发("+num+")");
                shenghuoText.setText("温度低，风较大，较易发生感冒，注意防护");
            }else {
@@ -93,6 +97,7 @@ public class ShengHuoAdapter extends BaseAdapter {
 
                break;
            case 3:
+               shenghuoImg.setImageResource(R.mipmap.yifu);
                if(num<12){
                    shenghuoLevel.setText("冷("+num+")");
                    shenghuoText.setText("建议穿长袖衬衫、单裤等服装");
@@ -105,6 +110,7 @@ public class ShengHuoAdapter extends BaseAdapter {
                }
                break;
            case 4:
+               shenghuoImg.setImageResource(R.mipmap.lanqiu);
                if(num<3000){
                    shenghuoLevel.setText("适宜("+num+")");
                    shenghuoText.setText("气候适宜，推荐您进行户外运动");
@@ -117,6 +123,7 @@ public class ShengHuoAdapter extends BaseAdapter {
                }
                break;
            case 5:
+               shenghuoImg.setImageResource(R.mipmap.yun);
                if(num<30){
                    shenghuoLevel.setText("优("+num+")");
                    shenghuoText.setText("空气质量非常好，非常适合户外活动，趁机出去多呼吸新鲜空气");
