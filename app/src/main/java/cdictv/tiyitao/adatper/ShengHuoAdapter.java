@@ -23,6 +23,7 @@ public class ShengHuoAdapter extends BaseAdapter {
     ImageView shenghuoImg ;
     TextView  shenghuoLevel;
     TextView  shenghuoText;
+    TextView  shenghuomiaoshu;
 
     public ShengHuoAdapter(Context context, List<Integer> list) {
         this.context = context;
@@ -54,6 +55,7 @@ public class ShengHuoAdapter extends BaseAdapter {
          shenghuoImg = (ImageView) convertView.findViewById(R.id.shenghuo_img);
           shenghuoLevel = (TextView) convertView.findViewById(R.id.shenghuo_level);
           shenghuoText = (TextView) convertView.findViewById(R.id.shenghuo_text);
+          shenghuomiaoshu = (TextView) convertView.findViewById(R.id.shenghuo_miaoshu);
 
           selectTextView(position,list.get(position),shenghuoImg);
 
@@ -64,6 +66,7 @@ public class ShengHuoAdapter extends BaseAdapter {
        switch (position){
            case 0:
                shenghuoImg.setImageResource(R.mipmap.qin);
+               shenghuomiaoshu.setText("紫外线指数");
                if(num < 1000){
                    shenghuoLevel.setText("弱("+num+")");
                    shenghuoText.setText("辐射较弱，涂擦SPF12~15、PA+护肤品");
@@ -76,7 +79,8 @@ public class ShengHuoAdapter extends BaseAdapter {
                }
                break;
            case 1:
-               shenghuoImg.setImageResource(R.mipmap.qin);
+               shenghuomiaoshu.setText("感冒指数");
+               shenghuoImg.setImageResource(R.mipmap.yaowan);
                 if(num<8){
                     shenghuoLevel.setText("较易发("+num+")");
                     shenghuoText.setText("温度低，风较大，较易发生感冒，注意防护");
@@ -86,30 +90,21 @@ public class ShengHuoAdapter extends BaseAdapter {
                 }
                break;
            case 2:
-               shenghuoImg.setImageResource(R.mipmap.yaowan);
-               if(num<8){
-               shenghuoLevel.setText("较易发("+num+")");
-               shenghuoText.setText("温度低，风较大，较易发生感冒，注意防护");
-           }else {
-               shenghuoLevel.setText("少发("+num+")");
-               shenghuoText.setText("无明显降温，感冒机率较低");
-           }
-
-               break;
-           case 3:
+               shenghuomiaoshu.setText("舒适指数");
                shenghuoImg.setImageResource(R.mipmap.yifu);
                if(num<12){
-                   shenghuoLevel.setText("冷("+num+")");
-                   shenghuoText.setText("建议穿长袖衬衫、单裤等服装");
-               }else if(num<21){
-                   shenghuoLevel.setText("舒适("+num+")");
-                   shenghuoText.setText("建议穿短袖衬衫、单裤等服装");
-               }else {
+               shenghuoLevel.setText("冷("+num+")");
+               shenghuoText.setText("建议穿长袖衬衫、单裤等服装");
+           }else if(num<21){
+               shenghuoLevel.setText("舒适("+num+")");
+               shenghuoText.setText("建议穿短袖衬衫、单裤等服装");
+           }else {
                    shenghuoLevel.setText("热("+num+")");
                    shenghuoText.setText("适合穿T恤、短薄外套等夏季服装");
                }
                break;
-           case 4:
+           case 3:
+               shenghuomiaoshu.setText("运动指数");
                shenghuoImg.setImageResource(R.mipmap.lanqiu);
                if(num<3000){
                    shenghuoLevel.setText("适宜("+num+")");
@@ -122,7 +117,8 @@ public class ShengHuoAdapter extends BaseAdapter {
                    shenghuoText.setText("空气氧气含量低，请在室内进行休闲运动");
                }
                break;
-           case 5:
+           case 4:
+               shenghuomiaoshu.setText("空气污染扩散指数");
                shenghuoImg.setImageResource(R.mipmap.yun);
                if(num<30){
                    shenghuoLevel.setText("优("+num+")");
@@ -135,8 +131,6 @@ public class ShengHuoAdapter extends BaseAdapter {
                    shenghuoText.setText("空气质量差，不适合户外活动");
                }
                break;
-
-
        }
 
     }

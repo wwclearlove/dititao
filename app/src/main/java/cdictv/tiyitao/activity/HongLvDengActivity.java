@@ -41,7 +41,7 @@ public class HongLvDengActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hong_lv_deng);
         initView();
-        String[] spinner = new String[]{"路口升序", "路口降序", "红灯升序", "红灯降序", "绿灯升序", "绿灯降序", "黄灯升序", "黄灯降序"};
+        String[] spinner = new String[]{"路口升序", "路口降序", "红灯升序", "红灯降序", "黄灯升序", "黄灯降序","绿灯升序", "绿灯降序" };
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 HongLvDengActivity.this, R.layout.spinner_hong, R.id.hong_spinner_tv, spinner);
         hong_spinner.setAdapter(arrayAdapter);

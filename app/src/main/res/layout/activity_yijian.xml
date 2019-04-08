@@ -50,6 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="标题"
+
         android:textColorHint="#000"/>
 
 

@@ -66,7 +66,6 @@ public class YijianActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.yijian_submt:
                 submit();
-                startActivity(new Intent(YijianActivity.this,WodeyijinaActivity.class));
                 break;
             case R.id.yijian_wodeyijian:
                 startActivity(new Intent(YijianActivity.this,WodeyijinaActivity.class));
@@ -79,24 +78,24 @@ public class YijianActivity extends AppCompatActivity implements View.OnClickLis
         // validate
         String biaoti = yijiian_biaoti.getText().toString().trim();
         if (TextUtils.isEmpty(biaoti)) {
-            Toast.makeText(this, "标题", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "请输入你的标题", Toast.LENGTH_SHORT).show();
             return;
         }
 
         String yijianleirong = yijiian_yijianleirong.getText().toString().trim();
         if (TextUtils.isEmpty(yijianleirong)) {
-            Toast.makeText(this, "输入你的意见", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "请输入你的意见", Toast.LENGTH_SHORT).show();
             return;
         }
 
         String shouiji = yijiian_shouiji.getText().toString().trim();
         if (TextUtils.isEmpty(shouiji)) {
-            Toast.makeText(this, "手机", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "请输入你的手机", Toast.LENGTH_SHORT).show();
             return;
         }
 
         // TODO validate success, do something
-      careatDataBase(biaoti,yijianleirong,shouiji);
+        careatDataBase(biaoti,yijianleirong,shouiji);
 
     }
 
@@ -113,5 +112,12 @@ public class YijianActivity extends AppCompatActivity implements View.OnClickLis
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        Toast.makeText(this, "提交成功！", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
     }
 }
