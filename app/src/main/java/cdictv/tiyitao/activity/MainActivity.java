@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.yijian:
-
+                startActivity(new Intent(MainActivity.this,YijianActivity.class));
                 break;
             case R.id.tianqi:
                 startActivity(new Intent(this, WeatherInformationActivity.class));
