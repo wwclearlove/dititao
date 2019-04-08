@@ -27,25 +27,39 @@ public class ShengHuozhishuActivity extends AppCompatActivity {
     Handler handler = new Handler();
     boolean flag = true;
     ProgressDialog dialog;
-
+    Runnable mRunnable=new Runnable() {
+        @Override
+        public void run() {
+            if(flag){
+                dialog = ProgressDialog.show(ShengHuozhishuActivity.this, "请稍后", "正在请求中....");
+            }
+            initRequest();
+            handler.postDelayed(this,3000);
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sheng_huozhishu);
         shenghuo_grideview = findViewById(R.id.shenghuo_grideview);
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                initRequest();
-                handler.postDelayed(this,3000);
-            }
-        },3000);
+        adapter = new ShengHuoAdapter(ShengHuozhishuActivity.this,list);
+        shenghuo_grideview.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        handler.postDelayed(mRunnable,3000);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        handler.removeCallbacks(mRunnable);
     }
 
     void initRequest(){
-        if(flag){
-            dialog = ProgressDialog.show(this, "请稍后", "正在请求中....");
-        }
+
         OkhttpApi.showOkhttp("https://www.easy-mock.com/mock/5c8f3515c42b1c0235654282/jiaotong/shenghuozhishu", new MyCall() {
             @Override
             public void success(String json) {
@@ -59,8 +73,7 @@ public class ShengHuozhishuActivity extends AppCompatActivity {
                     list.add(bean.data.chuanyi);
                     list.add(bean.data.yundong);
                     list.add(bean.data.wuran);
-                    adapter = new ShengHuoAdapter(ShengHuozhishuActivity.this,list);
-                    shenghuo_grideview.setAdapter(adapter);
+                   adapter.notifyDataSetChanged();
                 } catch (JsonSyntaxException e) {
                     e.printStackTrace();
                 }
