@@ -59,6 +59,9 @@ public class Bar1Fragment extends Fragment {
         View inflate = inflater.inflate(layout, container, false);
         HorizontalBarChart barChart = inflate.findViewById(R.id.barChart);
         barChart.setBackgroundColor(Color.WHITE);
+        xVals.clear();
+        yVals.clear();
+        dataSets.clear();
         getData();
 
 
