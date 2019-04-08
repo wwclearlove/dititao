@@ -53,9 +53,12 @@ public class Bar2Fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View inflate = inflater.inflate(layout, container, false);
         BarChart barChart = inflate.findViewById(R.id.barChart);
+
+        xVals.clear();
+        yVals.clear();
+        datasets.clear();
+
         getData();
-
-
 
         barChart.setEnabled(false);
         barChart.setGridBackgroundColor(Color.TRANSPARENT);
