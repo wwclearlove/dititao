@@ -5,6 +5,11 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
+import com.j256.ormlite.table.TableUtils;
+
+import java.sql.SQLException;
+
+import cdictv.tiyitao.bean.WodeyijanBean;
 
 
 public class DataBaseHelp extends OrmLiteSqliteOpenHelper {
@@ -27,7 +32,11 @@ public class DataBaseHelp extends OrmLiteSqliteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         //创建数据库
-        //TableUtils.createTable(connectionSource,类);
+        try {
+            TableUtils.createTable(connectionSource, WodeyijanBean.class);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
